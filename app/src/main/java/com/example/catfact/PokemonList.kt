@@ -11,6 +11,7 @@ import com.example.catfact.Common.Common
 import com.example.catfact.adapter.PokemonListAdapter
 import com.example.catfact.api.ApiRequests
 import com.example.catfact.api.RetrofitClient
+import com.google.gson.internal.bind.ReflectiveTypeAdapterFactory
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -34,6 +35,18 @@ class PokemonList : Fragment() {
 
         }
 
+//
+//    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+//
+//        val rootView =  inflater?.inflate(R.layout.fragment_layout, container, false)
+//        recyclerView = rootView?.findViewById(R.id.recycler_view_id)
+//        // rest of my stuff
+//        recyclerView?.setHasFixedSize(true)
+//        recyclerView?.layoutManager = viewManager
+//        recyclerView?.adapter = viewAdapter
+//        // return the root view
+//        return rootView
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +54,7 @@ class PokemonList : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val itemView = inflater.inflate(R.layout.fragment_pokemon_list, container, false)
+
 
         recycler_view = itemView.findViewById(R.id.pokemon_recyclerview) as RecyclerView
         recycler_view.setHasFixedSize(true)
