@@ -7,15 +7,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.example.catfact.PokemonList
 import com.example.catfact.R
-import kotlinx.android.synthetic.main.pokemon_list_item.view.*
-import kotlinx.coroutines.withContext
+import com.example.catfact.api.Pokemon
 
 class PokemonListAdapter(
     internal var context: Context,
-    internal var pokemonList: List<PokemonList>
+    internal var pokemonList: List<Pokemon>
 ) : RecyclerView.Adapter<PokemonListAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
