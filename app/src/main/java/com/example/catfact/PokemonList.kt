@@ -1,17 +1,17 @@
 package com.example.catfact
 
+
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.catfact.Common.Common
 import com.example.catfact.adapter.PokemonListAdapter
 import com.example.catfact.api.ApiRequests
 import com.example.catfact.api.RetrofitClient
-import com.google.gson.internal.bind.ReflectiveTypeAdapterFactory
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -32,6 +32,7 @@ class PokemonList : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         }
 
@@ -68,7 +69,7 @@ class PokemonList : Fragment() {
         compositeDisposable.add(apiRequests.listPokemon
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe{ pokemonDex ->
+            .subscribe { pokemonDex ->
                 Common.pokemonList = pokemonDex.pokemon!!
                 val adapter = PokemonListAdapter(activity!!, Common.pokemonList)
 
