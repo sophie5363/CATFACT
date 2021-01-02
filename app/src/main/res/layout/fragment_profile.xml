@@ -19,6 +19,8 @@
             android:layout_height="100dp"
             android:src="@drawable/ic_launcher_background" />
 
+
+
         <EditText
             android:id="@+id/et_profileUsername"
             android:layout_width="match_parent"
