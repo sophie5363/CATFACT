@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/pokemonList">
+
+    <fragment
+        android:id="@+id/pokemonList"
+        android:name="com.example.catfact.PokemonList"
+        android:label="Liste de Pokémons"
+        tools:layout="@layout/fragment_pokemon_list" />
+    <fragment
+        android:id="@+id/quiz"
+        android:name="com.example.catfact.Quiz"
+        android:label="Quiz Pokémons Gén 1 !"
+        tools:layout="@layout/fragment_quiz" />
+    <fragment
+        android:id="@+id/profil"
+        android:name="com.example.catfact.Profile"
+        android:label="Profil"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

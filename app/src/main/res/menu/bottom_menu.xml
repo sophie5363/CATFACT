@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/quiz"
+        android:icon="@drawable/ic_baseline_gamepad_24"
+        android:title="Quiz" />
+
+    <item
+        android:id="@+id/pokemonList"
+        android:icon="@drawable/ic_baseline_format_list_bulleted_24"
+        android:title="Liste" />
+
+    <item
+        android:id="@+id/profil"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Profil"
+
+        />
+
+
+</menu>
