@@ -38,6 +38,13 @@ class PokemonList : Fragment() {
         makeAPIRequest()
     }
 
+    private fun fadeInFromBlack(){
+        v_blackScreen.animate().apply {
+            alpha(0f)
+            duration = 3000
+        }.start()
+    }
+
 
     private fun setUpRecyclerView(){
         rv_recyclerview.layoutManager = LinearLayoutManager(context)
@@ -69,6 +76,7 @@ class PokemonList : Fragment() {
 
                 withContext(Dispatchers.Main){
                     setUpRecyclerView()
+                    fadeInFromBlack()
                 }
 
             } catch (e: Exception) {
@@ -85,8 +93,6 @@ class PokemonList : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val itemView = inflater.inflate(R.layout.fragment_pokemon_list, container, false)
-
-
 
         return itemView
     }
