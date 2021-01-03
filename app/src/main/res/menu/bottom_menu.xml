@@ -3,19 +3,19 @@
 
 
     <item
-        android:id="@+id/quiz"
+        android:id="@+id/scannerQR"
         android:icon="@drawable/ic_baseline_gamepad_24"
-        android:title="Quiz" />
+        android:title="@string/qr_code_menu_title" />
 
     <item
         android:id="@+id/pokemonList"
         android:icon="@drawable/ic_baseline_format_list_bulleted_24"
-        android:title="Liste" />
+        android:title="@string/pokemon_list_menu_title" />
 
     <item
         android:id="@+id/profil"
         android:icon="@drawable/ic_baseline_person_24"
-        android:title="Profil"
+        android:title="@string/profil_menu_title"
 
         />
 

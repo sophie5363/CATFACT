@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
         val navController = findNavController(R.id.nav_host)
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.pokemonList, R.id.quiz, R.id.profil))
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.pokemonList, R.id.scannerQR, R.id.profil))
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         bottomNavigationView.setupWithNavController(navController)
