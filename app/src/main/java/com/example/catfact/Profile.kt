@@ -26,20 +26,24 @@ import java.lang.Exception
 
 class Profile : Fragment() {
 
+    //stocking FirebaseAuth in a variable
+    //to be initialized when necessary
     private lateinit var auth: FirebaseAuth
+    //Holds a reference to the URI we select in the imagePicker
+    //initially set to null
     private var fileUri : Uri? = null
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //Instantiation of authentication
         auth = FirebaseAuth.getInstance()
+
 
         setUserInfo()
 
+        //Function that handles button clicks
         btnClicks()
-
     }
 
     private fun setUserInfo() {
@@ -50,15 +54,19 @@ class Profile : Fragment() {
         fileUri = auth.currentUser?.photoUrl
     }
 
+    //Reference to all the buttons on the profile screen
     private fun btnClicks() {
+        //signing the user our
         tv_profile_signOut.setOnClickListener {
             signOutUser()
         }
 
+        //saving user info
         btn_profileSaveInfo.setOnClickListener {
             saveUserInfo()
         }
 
+        //Setting or changing the profile pic
         iv_profileImage.setOnClickListener {
             selectImage()
         }
@@ -85,12 +93,10 @@ class Profile : Fragment() {
 
                         Toast.makeText(
                             requireActivity(),
-                            "Profile successfully updated !",
+                            "Profil mis à jour!",
                             Toast.LENGTH_SHORT
                             ).show()
                     }
-
-
 
                 } catch (e: Exception) {
                     withContext(Dispatchers.Main) {
@@ -107,10 +113,8 @@ class Profile : Fragment() {
         val i = Intent(requireActivity(), LoginActivity::class.java)
         startActivity(i)
 
-        Toast.makeText(requireActivity(), "Successfully signed out!", Toast.LENGTH_SHORT ).show()
-
+        Toast.makeText(requireActivity(), "Vous êtes déconnecté", Toast.LENGTH_SHORT ).show()
     }
-
 
     private fun selectImage() {
         ImagePicker.with(this)
@@ -120,29 +124,27 @@ class Profile : Fragment() {
             .start()
     }
 
+    //Allows to receive the image and insert it in the imageView
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         when (resultCode) {
+            //if we get the picture without problem we assign it as profile pic
             Activity.RESULT_OK -> {
                 fileUri = data?.data
                 iv_profileImage.setImageURI(fileUri)
             }
+            //Problems regarding the profile pic setting are displayed in a toast
             ImagePicker.RESULT_ERROR -> {
                 Toast.makeText(requireActivity(), ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
             }
             else -> {
-                Toast.makeText(requireActivity(), "Task cancelled", Toast.LENGTH_SHORT).show()
+                //if the user  backs out of setting a profile pic
+                //a toast informs them that the task was cancelled
+                Toast.makeText(requireActivity(), "Tâche abandonnée", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
-
-
-
-
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -153,6 +155,5 @@ class Profile : Fragment() {
 
         return itemView
     }
-
 
 }
