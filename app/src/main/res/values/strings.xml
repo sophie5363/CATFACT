@@ -2,6 +2,7 @@
     <string name="app_name">CatFact</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="call_to_action_scan">Scannez quelque chose...</string>
     <string name="hint_scan_sthg">Scannez quelque chose…</string>
     <string name="qr_code_menu_title">QR Code</string>
     <string name="pokemon_list_menu_title">Liste</string>
