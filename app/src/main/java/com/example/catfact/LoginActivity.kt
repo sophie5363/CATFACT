@@ -2,6 +2,7 @@ package com.example.catfact
 
 
 import android.app.Activity
+import android.app.PendingIntent.getActivity
 import android.content.Intent
 import android.net.Uri
 import android.net.sip.SipManager.newInstance
@@ -108,9 +109,21 @@ class LoginActivity : AppCompatActivity() {
                         //displaying a toast to let the user know they are logged in
                         Toast.makeText(
                             this@LoginActivity,
-                            "You are now logged in!",
+                            "Vous êtes connecté!",
                             Toast.LENGTH_SHORT
                         ).show()
+                        //Displaying the profile
+//                        supportFragmentManager
+//                            .beginTransaction()
+//                            .replace(R.id.layout_login, Profile())
+//                            .addToBackStack(null)
+//                            .commit()
+
+                        val i = Intent(this@LoginActivity, MainActivity::class.java)
+                        startActivity(i)
+                        finish()
+
+
                     }
                     //Lets the user know what went wrong thanks to a toast
                     //displaying the Firebase error message (nb of letters, mistake in email...)
@@ -119,12 +132,6 @@ class LoginActivity : AppCompatActivity() {
                     //The toast has to be displayed in the UI/Main thread
                     withContext(Dispatchers.Main) {
                         Toast.makeText(this@LoginActivity, e.message, Toast.LENGTH_SHORT).show()
-
-                        supportFragmentManager
-                            .beginTransaction()
-                            .replace(R.id.layout_login, Profile())
-                            .commit()
-
                     }
                 }
             }
@@ -133,8 +140,11 @@ class LoginActivity : AppCompatActivity() {
 
     private fun checkIfUserIsLoggedIn() {
         if (auth.currentUser != null) {
-            val fragmentTransaction = supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.layout_login, Profile()).commit()
+//            val fragmentTransaction = supportFragmentManager.beginTransaction()
+//            fragmentTransaction.replace(R.id.layout_login, Profile()).addToBackStack(null).commit()
+            val i = Intent(this@LoginActivity, MainActivity::class.java)
+            startActivity(i)
+            finish()
         }
     }
 
