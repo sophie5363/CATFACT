@@ -4,6 +4,7 @@ package com.example.catfact
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
+import android.net.sip.SipManager.newInstance
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
@@ -19,6 +20,8 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
+import java.lang.reflect.Array.newInstance
+import java.net.URLClassLoader.newInstance
 
 
 class LoginActivity : AppCompatActivity() {
@@ -65,15 +68,6 @@ class LoginActivity : AppCompatActivity() {
         iv_profileImage.setOnClickListener() {
             selectImage()
         }
-
-    }
-
-    fun AppCompatActivity.replaceFragment(fragment: Fragment) {
-        val fragmentManager = supportFragmentManager
-        val transaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.layout_login, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
 
     }
 
@@ -126,17 +120,10 @@ class LoginActivity : AppCompatActivity() {
                     withContext(Dispatchers.Main) {
                         Toast.makeText(this@LoginActivity, e.message, Toast.LENGTH_SHORT).show()
 
-                        //Taking the user to the Profile fragment
-                        //TODO: Changer l'envoi vers l'activité Profile (qui n'existe pas)
-                        //TODO: Remplacer par un envoi vers le fragment Profil.kt
-//                        val i = Intent(this@LoginActivity, Profile.class )
-//                        startActivity(i)
-//                        finish()
-                        val fragmentTransaction = supportFragmentManager.beginTransaction()
-                        fragmentTransaction.replace(R.id.layout_login, Profile()).commit()
-
-
-
+                        supportFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.layout_login, Profile())
+                            .commit()
 
                     }
                 }
@@ -144,53 +131,48 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-            //TODO: Changer l'envoi vers l'activité Profile (qui n'existe pas)
-            //TODO: Remplacer par un envoi vers le fragment Profil.kt
-            private fun checkIfUserIsLoggedIn() {
-                if (auth.currentUser != null) {
-//                    val i = Intent(this@LoginActivity, Profile::class.java)
-//                    startActivity(i)
-//                    finish()
-                    val fragmentTransaction = supportFragmentManager.beginTransaction()
-                    fragmentTransaction.replace(R.id.layout_login, Profile()).commit()
-                }
+    private fun checkIfUserIsLoggedIn() {
+        if (auth.currentUser != null) {
+            val fragmentTransaction = supportFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.layout_login, Profile()).commit()
+        }
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        checkIfUserIsLoggedIn()
+    }
+
+    private fun selectImage() {
+        ImagePicker.with(this)
+            .crop()
+            .compress(1024)
+            .maxResultSize(1080, 1080)
+            .start()
+    }
+
+    //Allows to receive the image and insert it in the imageView
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when (resultCode) {
+            //if we get the picture without problem we assign it as profile pic
+            Activity.RESULT_OK -> {
+                fileUri = data?.data
+                iv_profileImage.setImageURI(fileUri)
             }
-
-
-            override fun onStart() {
-                super.onStart()
-                checkIfUserIsLoggedIn()
+            //Problems regarding the profile pic setting are displayed in a toast
+            ImagePicker.RESULT_ERROR -> {
+                Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
             }
-
-            private fun selectImage() {
-                ImagePicker.with(this)
-                    .crop()
-                    .compress(1024)
-                    .maxResultSize(1080, 1080)
-                    .start()
-            }
-
-            //Allows to receive the image and insert it in the imageView
-            override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-                super.onActivityResult(requestCode, resultCode, data)
-
-                when (resultCode) {
-                    //if we get the picture without problem we assign it as profile pic
-                    Activity.RESULT_OK -> {
-                        fileUri = data?.data
-                        iv_profileImage.setImageURI(fileUri)
-                    }
-                    //Problems regarding the profile pic setting are displayed in a toast
-                    ImagePicker.RESULT_ERROR -> {
-                        Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
-                    }
-                    else -> {
-                        //if the user  backs out of setting a profile pic
-                        //a toast informs them that the task was cancelled
-                        Toast.makeText(this, "Tâche abandonnée", Toast.LENGTH_SHORT).show()
-                    }
-                }
+            else -> {
+                //if the user  backs out of setting a profile pic
+                //a toast informs them that the task was cancelled
+                Toast.makeText(this, "Tâche abandonnée", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+}
 
 

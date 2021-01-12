@@ -3,6 +3,9 @@
     package="com.example.catfact">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.sec.android.provider.badge.permission.READ"/>
+    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE"/>
+
 
     <application
         android:allowBackup="true"

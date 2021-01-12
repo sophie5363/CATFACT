@@ -38,9 +38,10 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/round_buttons"
                 android:backgroundTint="#F2F2F2"
-                android:hint="E-mail"
+                android:hint="@string/e_mail_hint"
                 android:inputType="textEmailAddress"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/et_passwordLogin"
@@ -49,9 +50,10 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/round_buttons"
                 android:backgroundTint="#F2F2F2"
-                android:hint="Password"
+                android:hint="@string/password_hint"
                 android:inputType="textPassword"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:autofillHints="" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,7 +69,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/round_buttons"
                     android:backgroundTint="#FFA726"
-                    android:text="Sign up"
+                    android:text="@string/signUp_btn_title"
                     android:textColor="@android:color/white" />
 
                 <Button
@@ -78,7 +80,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/round_buttons"
                     android:backgroundTint="#42A5F5"
-                    android:text="Login"
+                    android:text="@string/login_btn_title"
                     android:textColor="@android:color/white" />
 
             </LinearLayout>

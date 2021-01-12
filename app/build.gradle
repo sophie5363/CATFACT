@@ -7,14 +7,14 @@ plugins {
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
     defaultConfig {
         multiDexEnabled true
     }
 
     defaultConfig {
         applicationId "com.example.catfact"
-        minSdkVersion 19
+        minSdkVersion 22
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
