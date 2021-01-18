@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -13,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.catfact"
-        minSdkVersion 24
+        minSdkVersion 22
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -74,6 +75,23 @@ dependencies {
 
     //Material
     implementation 'com.google.android.material:material:1.2.1'
+
+
+    //CardView
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    //Firebase Authentication
+    implementation 'com.google.firebase:firebase-auth:20.0.1'
+    implementation 'com.google.firebase:firebase-database-ktx:19.6.0'
+
+    //Coroutines for play services
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
+
+    //Image picker
+    implementation 'com.github.dhaval2404:imagepicker:1.7.5'
+
+    //Circular ImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     //QR Code Scanner
     implementation 'com.budiyev.android:code-scanner:2.1.0'

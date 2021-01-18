@@ -1,31 +1,148 @@
 package com.example.catfact
 
+
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.fragment_profile.iv_profileImage
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
+import java.lang.Exception
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Profile.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Profile : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    //stocking FirebaseAuth in a variable
+    //to be initialized when necessary
+    private lateinit var auth: FirebaseAuth
+    //Holds a reference to the URI we select in the imagePicker
+    //initially set to null
+    private var fileUri : Uri? = null
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //Instantiation of authentication
+        auth = FirebaseAuth.getInstance()
+
+
+        setUserInfo()
+
+        //Function that handles button clicks
+        btnClicks()
+    }
+
+    private fun setUserInfo() {
+        et_profileEmail.setText(auth.currentUser?.email)
+        et_profileUsername.setText(auth.currentUser?.displayName)
+        iv_profileImage.setImageURI(auth.currentUser?.photoUrl)
+
+        fileUri = auth.currentUser?.photoUrl
+    }
+
+    //Reference to all the buttons on the profile screen
+    private fun btnClicks() {
+        //signing the user our
+        tv_profile_signOut.setOnClickListener {
+            signOutUser()
+        }
+
+        //saving user info
+        btn_profileSaveInfo.setOnClickListener {
+            saveUserInfo()
+        }
+
+        //Setting or changing the profile pic
+        iv_profileImage.setOnClickListener {
+            selectImage()
+        }
+    }
+
+    private fun saveUserInfo() {
+        auth.currentUser?.let {
+            val userName = et_profileUsername.text.toString()
+            val userProfilePicture = fileUri
+            val userEmail = et_profileEmail.text.toString()
+
+            val update = UserProfileChangeRequest.Builder()
+                .setDisplayName(userName)
+                .setPhotoUri(userProfilePicture)
+                .build()
+
+            GlobalScope.launch(Dispatchers.IO) {
+                try {
+                    it.updateProfile(update).await()
+                    it.updateEmail(userEmail)
+
+                    withContext(Dispatchers.IO){
+                        setUserInfo()
+
+                        Toast.makeText(
+                            requireActivity(),
+                            "Profil mis à jour!",
+                            Toast.LENGTH_SHORT
+                            ).show()
+                    }
+
+                } catch (e: Exception) {
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(requireActivity(), e.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun signOutUser() {
+        auth.signOut()
+
+        val i = Intent(requireActivity(), LoginActivity::class.java)
+        startActivity(i)
+
+        Toast.makeText(requireActivity(), "Vous êtes déconnecté", Toast.LENGTH_SHORT ).show()
+    }
+
+    private fun selectImage() {
+        ImagePicker.with(this)
+            .crop()
+            .compress(1024)
+            .maxResultSize(1080, 1080)
+            .start()
+    }
+
+    //Allows to receive the image and insert it in the imageView
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when (resultCode) {
+            //if we get the picture without problem we assign it as profile pic
+            Activity.RESULT_OK -> {
+                fileUri = data?.data
+                iv_profileImage.setImageURI(fileUri)
+            }
+            //Problems regarding the profile pic setting are displayed in a toast
+            ImagePicker.RESULT_ERROR -> {
+                Toast.makeText(requireActivity(), ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
+            }
+            else -> {
+                //if the user  backs out of setting a profile pic
+                //a toast informs them that the task was cancelled
+                Toast.makeText(requireActivity(), "Tâche abandonnée", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -34,26 +151,9 @@ class Profile : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        val itemView = inflater.inflate(R.layout.fragment_profile, container, false)
+
+        return itemView
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Profile.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Profile().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

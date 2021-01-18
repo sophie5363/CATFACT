@@ -7,4 +7,12 @@
     <string name="qr_code_menu_title">QR Code</string>
     <string name="pokemon_list_menu_title">Liste</string>
     <string name="profil_menu_title">Profil</string>
+    <string name="signUp_btn_title">S\'inscrire</string>
+    <string name="login_btn_title">Connexion</string>
+    <string name="e_mail_hint">E-mail</string>
+    <string name="password_hint">Mot de passe</string>
+    <string name="username">Pseudo</string>
+    <string name="e_mail">E-mail</string>
+    <string name="save_info">sauvegarder</string>
+    <string name="sign_out">Déconnexion</string>
 </resources>
