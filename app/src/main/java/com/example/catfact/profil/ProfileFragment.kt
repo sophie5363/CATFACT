@@ -1,4 +1,4 @@
-package com.example.catfact
+package com.example.catfact.profil
 
 
 import android.app.Activity
@@ -10,10 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.catfact.R
+import com.example.catfact.login.LoginActivity
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.iv_profileImage
 import kotlinx.coroutines.Dispatchers

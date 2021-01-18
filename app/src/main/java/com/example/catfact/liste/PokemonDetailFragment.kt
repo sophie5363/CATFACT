@@ -1,11 +1,11 @@
-package com.example.catfact
+package com.example.catfact.liste
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.pokemon_list_item.*
+import com.example.catfact.R
 
 
 class PokemonDetailFragment : Fragment() {
