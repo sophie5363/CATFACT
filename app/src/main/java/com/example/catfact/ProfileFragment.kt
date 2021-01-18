@@ -24,7 +24,7 @@ import kotlinx.coroutines.withContext
 import java.lang.Exception
 
 
-class Profile : Fragment() {
+class ProfileFragment : Fragment() {
 
     //stocking FirebaseAuth in a variable
     //to be initialized when necessary

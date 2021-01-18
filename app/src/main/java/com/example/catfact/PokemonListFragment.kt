@@ -32,6 +32,7 @@ class PokemonList : Fragment() {
     private var imagesList = mutableListOf<String>()
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -41,7 +42,7 @@ class PokemonList : Fragment() {
     private fun fadeInFromBlack(){
         v_blackScreen.animate().apply {
             alpha(0f)
-            duration = 3000
+            duration = 1500
         }.start()
     }
 

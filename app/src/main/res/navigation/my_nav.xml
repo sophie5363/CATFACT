@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/scannerQR"
         android:name="com.example.catfact.ScannerQR"
-        android:label="fragment_scanner_q_r"
+        android:label="Scanner QR Code"
         tools:layout="@layout/fragment_scanner_q_r" />
 
     <fragment
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/profil"
-        android:name="com.example.catfact.Profile"
+        android:name="com.example.catfact.ProfileFragment"
         android:label="Profil"
         tools:layout="@layout/fragment_profile" />
 
