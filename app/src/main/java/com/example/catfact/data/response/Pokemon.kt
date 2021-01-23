@@ -1,4 +1,4 @@
-package com.example.catfact.api
+package com.example.catfact.data.response
 
 data class Pokemon(
 //    val avg_spawns: Int,

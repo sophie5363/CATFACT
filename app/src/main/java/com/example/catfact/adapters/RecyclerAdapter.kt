@@ -25,9 +25,6 @@ class RecyclerAdapter(
 
         }
 
-
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.pokemon_list_item, parent, false)
         return ViewHolder(v)

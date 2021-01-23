@@ -1,4 +1,4 @@
-package com.example.catfact.login
+package com.example.catfact.ui.login
 
 
 import android.app.Activity

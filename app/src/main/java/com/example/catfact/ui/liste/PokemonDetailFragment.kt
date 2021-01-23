@@ -1,4 +1,4 @@
-package com.example.catfact.liste
+package com.example.catfact.ui.liste
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

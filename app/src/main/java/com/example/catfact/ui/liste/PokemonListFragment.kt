@@ -1,4 +1,4 @@
-package com.example.catfact.liste
+package com.example.catfact.ui.liste
 
 
 
@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.catfact.R
 import com.example.catfact.adapters.RecyclerAdapter
-import com.example.catfact.api.APIRequests
+import com.example.catfact.data.APIRequests
 import kotlinx.android.synthetic.main.fragment_pokemon_list.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

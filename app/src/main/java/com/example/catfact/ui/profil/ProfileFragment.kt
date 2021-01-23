@@ -1,4 +1,4 @@
-package com.example.catfact.profil
+package com.example.catfact.ui.profil
 
 
 import android.app.Activity
@@ -11,7 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.catfact.R
-import com.example.catfact.login.LoginActivity
+import com.example.catfact.ui.login.LoginActivity
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest

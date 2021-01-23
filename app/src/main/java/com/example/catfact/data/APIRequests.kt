@@ -1,6 +1,6 @@
-package com.example.catfact.api
+package com.example.catfact.data
 
-import com.example.catfact.api.PokemonApiJSON
+import com.example.catfact.data.response.PokemonApiJSON
 import retrofit2.http.GET
 
 interface APIRequests {

@@ -1,4 +1,4 @@
-package com.example.catfact.qrcode
+package com.example.catfact.ui.qrcode
 
 
 import android.content.pm.PackageManager

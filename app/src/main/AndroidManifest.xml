@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CatFact">
 
-        <activity android:name=".login.LoginActivity">
+        <activity android:name="com.example.catfact.ui.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
