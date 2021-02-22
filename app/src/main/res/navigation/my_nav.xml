@@ -16,12 +16,25 @@
         android:id="@+id/pokemonList"
         android:name="com.example.catfact.ui.fragments.PokemonList"
         android:label="Liste de Pokémons"
-        tools:layout="@layout/fragment_pokemon_list" />
+        tools:layout="@layout/fragment_pokemon_list" >
+        <action
+            android:id="@+id/action_pokemonList_to_pokemonDetailFragment2"
+            app:destination="@id/pokemonDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/profil"
         android:name="com.example.catfact.ui.fragments.ProfileFragment"
         android:label="Profil"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/pokemonDetailFragment"
+        android:name="com.example.catfact.ui.fragments.PokemonDetailFragment"
+        android:label="fragment_pokemon_detail"
+        tools:layout="@layout/fragment_pokemon_detail" >
+        <action
+            android:id="@+id/action_pokemonDetailFragment_to_pokemonList2"
+            app:destination="@id/pokemonList" />
+    </fragment>
 
 </navigation>

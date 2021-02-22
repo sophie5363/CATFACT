@@ -1,7 +1,6 @@
 package com.example.catfact.api
 
 data class Pokemon(
-//    val avg_spawns: Int,
     val candy: String,
     val candy_count: Int,
     val egg: String,
@@ -10,9 +9,7 @@ data class Pokemon(
     val img: String,
     val multipliers: List<Double>,
     val name: String,
-    val next_evolution: List<NextEvolution>,
     val num: String,
-    val prev_evolution: List<PrevEvolution>,
     val spawn_chance: Double,
     val spawn_time: String,
     val type: List<String>,
