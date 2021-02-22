@@ -1,17 +1,13 @@
-package com.example.catfact
+package com.example.catfact.ui.activities
 
 
 import android.app.Activity
-import android.app.PendingIntent.getActivity
 import android.content.Intent
 import android.net.Uri
-import android.net.sip.SipManager.newInstance
 import android.os.Bundle
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
+import com.example.catfact.R
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
@@ -21,8 +17,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
-import java.lang.reflect.Array.newInstance
-import java.net.URLClassLoader.newInstance
 
 
 class LoginActivity : AppCompatActivity() {

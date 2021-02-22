@@ -1,4 +1,4 @@
-package com.example.catfact
+package com.example.catfact.ui.fragments
 
 
 import android.content.pm.PackageManager
@@ -13,6 +13,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.budiyev.android.codescanner.*
 import kotlinx.android.synthetic.main.fragment_scanner_q_r.*
+import com.example.catfact.R
+
 
 private const val CAMERA_REQUEST_CODE = 101
 
@@ -27,6 +29,8 @@ class ScannerQR : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_scanner_q_r, container, false)
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

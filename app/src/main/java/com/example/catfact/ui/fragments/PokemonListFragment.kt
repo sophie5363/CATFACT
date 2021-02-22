@@ -1,4 +1,4 @@
-package com.example.catfact
+package com.example.catfact.ui.fragments
 
 
 
@@ -11,7 +11,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.catfact.R
 import com.example.catfact.adapters.RecyclerAdapter
+import com.example.catfact.api.APIRequests
 import kotlinx.android.synthetic.main.fragment_pokemon_list.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

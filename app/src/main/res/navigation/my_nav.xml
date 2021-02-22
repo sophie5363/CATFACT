@@ -8,19 +8,19 @@
 
     <fragment
         android:id="@+id/scannerQR"
-        android:name="com.example.catfact.ScannerQR"
+        android:name="com.example.catfact.ui.fragments.ScannerQR"
         android:label="Scanner QR Code"
         tools:layout="@layout/fragment_scanner_q_r" />
 
     <fragment
         android:id="@+id/pokemonList"
-        android:name="com.example.catfact.PokemonList"
+        android:name="com.example.catfact.ui.fragments.PokemonList"
         android:label="Liste de Pokémons"
         tools:layout="@layout/fragment_pokemon_list" />
 
     <fragment
         android:id="@+id/profil"
-        android:name="com.example.catfact.ProfileFragment"
+        android:name="com.example.catfact.ui.fragments.ProfileFragment"
         android:label="Profil"
         tools:layout="@layout/fragment_profile" />
 

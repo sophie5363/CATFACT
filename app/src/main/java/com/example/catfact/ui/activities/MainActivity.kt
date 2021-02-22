@@ -1,13 +1,13 @@
-package com.example.catfact
+package com.example.catfact.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 
 import androidx.navigation.ui.setupWithNavController
+import com.example.catfact.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -20,7 +20,11 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
         val navController = findNavController(R.id.nav_host)
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.pokemonList, R.id.scannerQR, R.id.profil))
+        val appBarConfiguration = AppBarConfiguration(setOf(
+            R.id.pokemonList,
+            R.id.scannerQR,
+            R.id.profil
+        ))
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         bottomNavigationView.setupWithNavController(navController)
