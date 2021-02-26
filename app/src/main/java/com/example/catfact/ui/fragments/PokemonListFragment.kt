@@ -10,10 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.catfact.R
 import com.example.catfact.adapters.RecyclerAdapter
-import com.example.catfact.api.APIRequests
+import com.example.catfact.api.PokemonApi
 import kotlinx.android.synthetic.main.fragment_pokemon_list.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -66,7 +65,7 @@ class PokemonList : Fragment() {
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(APIRequests::class.java)
+            .create(PokemonApi::class.java)
 
         GlobalScope.launch(Dispatchers.IO) {
             try {
